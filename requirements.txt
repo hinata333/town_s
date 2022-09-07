@@ -5,3 +5,4 @@ pandas==1.4.3
 lxml==4.9.1
 selenium==4.3.0
 webdriver-manager==3.7.1
+chromedriver-binary==104.0.5112.20.0
