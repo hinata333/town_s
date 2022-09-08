@@ -20,15 +20,16 @@ n = items // 20
 if (items % 20) != 0: n += 1
 
 def main():
-  options = Options()
+  options = webdriver.FirefoxOptions()
   options.add_argument('--headless')
   options.add_argument('--incognito')
   options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36')
+  
+  driver = webdriver.Remote(
+    command_executor='http://localhost:4444/wd/hub',
+    options=options,
+  )
 
-  driver = webdriver.Chrome(
-    executable_path = ChromeDriverManager().install(),
-    options = options)
-  driver.implicitly_wait(10)
   url = 'https://itp.ne.jp/keyword/?keyword=%E7%BE%8E%E5%AE%B9%E9%99%A2&areaword=%E6%9D%B1%E4%BA%AC%E9%83%BD&sort=01&sbmap=false%EF%BC%88%E7%BE%8E%E5%AE%B9%E9%99%A2'
 
   driver.get(url)
