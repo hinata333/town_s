@@ -5,10 +5,10 @@ import requests
 import pandas as pd
 import base64
 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
-header = {
-    'User-Agent': user_agent
-}
+# user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+# header = {
+#     'User-Agent': user_agent
+# }
 
 st.title('電話帳ナビ　スクレイピング')
 items = st.number_input('取得件数を入力してください。', 1, 100, 1)
@@ -34,7 +34,7 @@ def main():
       try:
         print('-----ERROR(リトライ中)-----')
         sleep(3)
-        r = requests.get(url, headers=header, timeout=20)
+        r = requests.get(url, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
       except Exception as e:
