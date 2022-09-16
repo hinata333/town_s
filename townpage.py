@@ -27,7 +27,7 @@ def main():
     print(url)
     try:
       sleep(3)
-      r = requests.get(url, headers=header, timeout=20)
+      r = requests.get(url, timeout=20)
       r.raise_for_status()
       soup = BeautifulSoup(r.content, 'lxml')
     except Exception as e:
@@ -40,7 +40,7 @@ def main():
       except Exception as e:
         print('-----ERROR(リトライ中)-----')
         sleep(3)
-        r = requests.get(url, headers=header, timeout=20)
+        r = requests.get(url, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
         pass
