@@ -21,9 +21,9 @@ def main():
   for i in range(n):
     url = 'https://www.telnavi.jp/search?q=%E6%8A%95%E8%B3%87' + f'&p={i+1}'
     print(url)
-    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+   
     header = {
-        'User-Agent': user_agent,
+        'User-Agent': 'Mozilla/5.0',
         "referer":url
     }
     try:
