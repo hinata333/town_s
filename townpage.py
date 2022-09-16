@@ -23,7 +23,7 @@ def main():
   d_list = []
   count = 0
   for i in range(n):
-    url = 'https://www.telnavi.jp/search?q=%E6%8A%95%E8%B3%87' + f'&p={i+1}'
+    url = 'https://www.telnavi.jp/search?q=%E4%BF%9D%E9%99%BA' + f'&p={i+1}'
     print(url)
     try:
       sleep(3)
