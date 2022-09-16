@@ -27,20 +27,20 @@ def main():
         "referer":url
     }
     try:
-      sleep(3)
+      sleep(7)
       r = requests.get(url, headers=header, timeout=20)
       r.raise_for_status()
       soup = BeautifulSoup(r.content, 'lxml')
     except Exception as e:
       try:
         print('-----ERROR(リトライ中)-----')
-        sleep(3)
+        sleep(10)
         r = requests.get(url, headers=header, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
       except Exception as e:
         print('-----ERROR(リトライ中)-----')
-        sleep(3)
+        sleep(10)
         r = requests.get(url, headers=header, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
