@@ -5,10 +5,6 @@ import requests
 import pandas as pd
 import base64
 
-# user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
-# header = {
-#     'User-Agent': user_agent
-# }
 
 st.title('電話帳ナビ　スクレイピング')
 items = st.number_input('取得件数を入力してください。', 1, 100, 1)
@@ -23,24 +19,29 @@ def main():
   d_list = []
   count = 0
   for i in range(n):
-    url = 'https://www.telnavi.jp/search?q=%E4%BF%9D%E9%99%BA' + f'&p={i+1}'
+    url = 'https://www.telnavi.jp/search?q=%E6%8A%95%E8%B3%87' + f'&p={i+1}'
     print(url)
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+    header = {
+        'User-Agent': user_agent,
+        "referer":url
+    }
     try:
       sleep(3)
-      r = requests.get(url, timeout=20)
+      r = requests.get(url, headers=header, timeout=20)
       r.raise_for_status()
       soup = BeautifulSoup(r.content, 'lxml')
     except Exception as e:
       try:
         print('-----ERROR(リトライ中)-----')
         sleep(3)
-        r = requests.get(url, timeout=20)
+        r = requests.get(url, headers=header, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
       except Exception as e:
         print('-----ERROR(リトライ中)-----')
         sleep(3)
-        r = requests.get(url, timeout=20)
+        r = requests.get(url, headers=header, timeout=20)
         r.raise_for_status()
         soup = BeautifulSoup(r.content, 'lxml')
         pass
